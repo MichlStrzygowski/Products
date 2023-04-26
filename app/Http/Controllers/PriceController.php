@@ -33,7 +33,7 @@ class PriceController extends Controller
     {
         $price = Price::create(array_merge($request->all(), ['product_id' => $product->id]));
         return response()->json([
-            'message' => ($price)? 'Price created successfully' : 'Price not created'
+            'message' => ($price) ? 'Price created successfully' : 'Price not created'
         ], 201);
 
     }
@@ -63,7 +63,7 @@ class PriceController extends Controller
         $result = Price::where('product_id', $product->id)->where('id', $price->id)->update($request->all());
 
         return response()->json([
-            'message' => ($result)? 'Price updated successfully' : 'Price not updated'
+            'message' => ($result) ? 'Price updated successfully' : 'Price not updated'
         ], 200);
 
     }
@@ -71,12 +71,12 @@ class PriceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( Product $product, Price $price)
+    public function destroy(Product $product, Price $price)
     {
         $result = Price::where('id', $price->id)->where('product_id', $product->id)->delete();
 
         return response()->json([
-            'message' => ($result)? 'Price deleted successfully' : 'Price not deleted'
+            'message' => ($result) ? 'Price deleted successfully' : 'Price not deleted'
         ], 204);
     }
 }

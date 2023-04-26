@@ -43,7 +43,7 @@ class ProductControllerTest extends TestCase
 
         $product = Product::factory()->create();
 
-        $response = $this->get('/api/products/'.$product->id);
+        $response = $this->get('/api/products/' . $product->id);
 
         $response->assertStatus(200);
 
