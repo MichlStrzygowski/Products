@@ -21,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('products', [ProductController::class, 'index']);
+Route::get('products/{sort?}/{dir?}', [ProductController::class, 'index'])->where('sort', '[a-zA-Z]+')->where('dir', 'asc|desc');
+
+
 Route::get('products/{product}', [ProductController::class, 'show'])->where('product', '[0-9]+');
 
 Route::middleware('auth:sanctum')->group(function () {

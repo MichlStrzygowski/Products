@@ -12,9 +12,10 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index( $sort = 'id', $dir = 'asc')
     {
-        return Product::with('prices')->orderBy('id')->get();
+        $sort = (in_array($sort, array_keys(Product::VALIDATION_STORE_RULES))) ? $sort : 'id';
+        return Product::with('prices')->orderBy($sort, $dir)->get();
     }
 
     /**
